@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 09:43:46 by smakkass          #+#    #+#             */
-/*   Updated: 2025/12/13 23:43:37 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/05 18:19:49 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 
 int					ft_atoi(const char *str);
-long					ft_atol(const char *str);
+long				ft_atol(const char *str);
 char				*ft_itoa(int n);
 
 void				ft_putchar_fd(char c, int fd);
