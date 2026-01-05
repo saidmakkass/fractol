@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:00:16 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/05 18:15:57 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/05 22:05:14 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ static void	parse_fractal(t_data *data, char *arg)
 {
 	if (!arg)
 		return ;
-	if (!ft_strcmp("mandelbrot", arg))
-		data->flags->fractal = MANDLEBROT;
-	else if (!ft_strcmp("julia", arg))
-		data->flags->fractal = JULIA;
-	else if (!ft_strcmp("burning_ship", arg))
-		data->flags->fractal = BURNING_SHIP;
+	if (!ft_strcmp("m", arg) || !ft_strcmp("mandelbrot", arg))
+		data->options->fractal = MANDLEBROT;
+	else if (!ft_strcmp("j", arg) || !ft_strcmp("julia", arg))
+		data->options->fractal = JULIA;
+	else if (!ft_strcmp("b", arg) || !ft_strcmp("burning_ship", arg))
+		data->options->fractal = BURNING_SHIP;
 	else
 		usage(data);
 }
@@ -42,7 +42,7 @@ static void	parse_size(t_data *data, char *arg)
 	if (!arg)
 		usage(data);
 	if (ft_isdigit(*arg))
-		data->flags->width = ft_atoi(arg);
+		data->options->width = ft_atoi(arg);
 	else
 		usage(data);
 	while (ft_isdigit(*arg))
@@ -52,7 +52,7 @@ static void	parse_size(t_data *data, char *arg)
 	else
 		usage(data);
 	if (ft_isdigit(*arg))
-		data->flags->height = ft_atoi(arg);
+		data->options->height = ft_atoi(arg);
 	else
 		usage(data);
 	while (ft_isdigit(*arg))
@@ -65,22 +65,22 @@ static void	parse_julia(t_data *data, char *arg)
 {
 	int	sign;
 
-	sign = -1;
-	data->flags->julia_x = ft_atof(data, &arg);
+	sign = 1;
+	data->options->julia_x = ft_atof(data, &arg);
 	while (ft_isspace(*arg))
 		arg++;
 	if (*arg == '+')
 		arg++;
 	else if (*arg == '-')
 	{
-		sign = 1;
+		sign = -1;
 		arg++;
 	}
 	else
 		usage(data);
 	while (ft_isspace(*arg))
 		arg++;
-	data->flags->julia_y = sign * ft_atof(data, &arg);
+	data->options->julia_y = sign * ft_atof(data, &arg);
 	if (*arg == 'i')
 		arg++;
 	else

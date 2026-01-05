@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   loop_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/04 13:35:28 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/05 21:32:17 by smakkass         ###   ########.fr       */
+/*   Created: 2026/01/05 19:29:22 by smakkass          #+#    #+#             */
+/*   Updated: 2026/01/05 19:29:47 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	julia(t_data *data, double x, double y)
+int	loop_hook(t_data *data)
 {
-	int		iter;
-	double	xtemp;
-
-	iter = 0;
-	while (x * x + y * y <= 4.0 && iter < data->max_iter)
+	if (data->disco)
 	{
-		xtemp = x * x - y * y + data->options->julia_x;
-		y = 2 * x * y - data->options->julia_y;
-		x = xtemp;
-		iter++;
+		data->color++;
+		if (data->color > 1000)
+			data->color = 0;
+		plot(data);
 	}
-	return (color(data, iter));
+	return (0);
 }
