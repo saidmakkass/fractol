@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 19:29:08 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/05 21:26:54 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/05 22:39:01 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ static void	click_hook(int button, double dx, double dy, t_data *data)
 	}
 	if (button == RIGHT_CLICK)
 	{
+		data->max_iter = DEFAULT_ITER;
+		data->zoom = DEFAULT_ZOOM;
 		data->ox = 0;
 		data->oy = 0;
-		data->zoom = DEFAULT_ZOOM;
-		data->max_iter = DEFAULT_ITER;
+		data->color = 0;
+		data->disco = false;
 	}
 }
 

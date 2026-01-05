@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 19:29:19 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/05 21:58:56 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/05 22:38:30 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ static void	misc_hook(int keycode, t_data *data)
 		data->zoom = DEFAULT_ZOOM;
 		data->ox = 0;
 		data->oy = 0;
+		data->color = 0;
+		data->disco = false;
 	}
 	if (keycode == XK_f)
 	{
