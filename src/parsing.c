@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:00:16 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/06 17:10:19 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/06 17:24:02 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ void	parse_args(t_data *data, int argc, char **argv)
 		lower(argv[i]);
 		if (!ft_strcmp("-s", argv[i]))
 			parse_size(data, argv[++i]);
-		else if (data->options->fractal == JULIA)
-			parse_julia(data, argv[i]);
+		else if (!ft_strcmp("-j", argv[i]))
+			parse_julia(data, argv[++i]);
 		else
 			usage(data);
 		i++;

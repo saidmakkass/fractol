@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:00:29 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/06 17:10:47 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/06 17:28:04 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,25 @@ void	clear_data(t_data *data)
 static void	print_fractals(void)
 {
 	ft_putstr_fd("Fractals:\n", 2);
-	ft_putstr_fd("\tM / Mandelbrot\n", 2);
-	ft_putstr_fd("\tJ / Julia\n", 2);
-	ft_putstr_fd("\tB / Burning_ship\n", 2);
+	ft_putstr_fd("\tJ, Julia\n", 2);
+	ft_putstr_fd("\tM, Mandelbrot\n", 2);
+	ft_putstr_fd("\tB, Burning_ship\n", 2);
 }
 
 static void	print_options(void)
 {
 	ft_putstr_fd("Options:\n", 2);
-	ft_putstr_fd("\t<Julia c>\t//example: -j \"-0.8 + 0.156i\"\n", 2);
-	ft_putstr_fd("\t-s <size>\t//example: -s 800x800\n", 2);
+	ft_putstr_fd("\t-j <c>\n\t\tset the constant c for the Julia fractal.\n\t\tDefault = 0.285 + 0.01i.\n", 2);
+	ft_putstr_fd("\t-s <size>\n\t\tset the size of the window.\n\t\tDefault = 600x600.\n", 2);
 }
 
 static void	print_examples(t_data *data)
 {
 	ft_putstr_fd("Examples:\n\t", 2);
 	ft_putstr_fd(data->name, 2);
-	ft_putstr_fd(" Mandelbrot\n\t", 2);
+	ft_putstr_fd(" Julia -j \"-0.8 + 0.156i\"\n\t", 2);
 	ft_putstr_fd(data->name, 2);
-	ft_putstr_fd(" Julia \"-0.8 + 0.156i\"\n\t", 2);
+	ft_putstr_fd(" Mandelbrot\n\t", 2);
 	ft_putstr_fd(data->name, 2);
 	ft_putstr_fd(" Burning_ship -s 800x800\n", 2);
 }
