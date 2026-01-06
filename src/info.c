@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 15:02:38 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/06 15:00:51 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/06 16:10:40 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ static void	print_commands(t_data *data, int *y)
 {
 	*y += 5;
 	print(data, "Commands:", y);
-	print(data, "Mouse up / '+' = zoom in", y);
-	print(data, "Mouse down / '-' = zoom out", y);
-	print(data, "Arrow Keys / Left click = pan view", y);
-	print(data, "'R' / Right click = reset view", y);
+	print(data, "Arrow Keys = pan view", y);
+	print(data, "Mouse wheel up / down = zoom", y);
+	print(data, "'-' / '+' = zoom", y);
 	print(data, "'[' / ']' = chnage max iter", y);
 	print(data, "';' / ''' = chnage color", y);
+	print(data, "'R' = reset view", y);
 	print(data, "'F' = change fractal", y);
 	print(data, "'O' = toggle disco", y);
-	print(data, "'P' = toggle info", y);
 	print(data, "'M' = toggle Julia map", y);
+	print(data, "'P' = toggle info", y);
 }
 
 void	print_info(t_data *data)

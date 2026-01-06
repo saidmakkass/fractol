@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:00:35 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/06 14:18:16 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:49:08 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	main(int argc, char **argv)
 	mlx_mouse_hook(data->fractal->win, mouse_hook, data);
 	mlx_expose_hook(data->fractal->win, expose_hook, data);
 	mlx_loop_hook(data->mlx, loop_hook, data);
-	mlx_hook(data->fractal->win, 17, 0, quit, data);
+	mlx_hook(data->fractal->win, DestroyNotify, NoEventMask, quit, data);
 	mlx_loop(data->mlx);
 	clear_data(data);
 	return (0);

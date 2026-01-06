@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 19:29:22 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/06 15:15:54 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/06 16:01:21 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	loop_hook(t_data *data)
 			data->color = 0;
 		plot(data);
 	}
-	if (data->map)
+	if (data->hold)
 	{
 		mlx_mouse_get_pos(data->mlx, data->map->win, &x, &y);
 		data->options->julia_x = (x - 150) / 0.25 / 300;

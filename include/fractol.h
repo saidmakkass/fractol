@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 19:45:51 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/06 15:22:37 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/06 16:18:17 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include "mlx.h"
+# include <X11/X.h>
 # include <X11/keysym.h>
 # include <X11/keysymdef.h>
 # include <math.h>
@@ -75,6 +76,7 @@ typedef struct s_data
 	bool		disco;
 	int			color;
 	t_win		*map;
+	bool		hold;
 }				t_data;
 
 void			clear_data(t_data *data);
@@ -95,6 +97,11 @@ void			plot(t_data *data);
 void			print_info(t_data *data);
 
 void			start_map(t_data *data);
+int				map_key_hook(int keycode, t_data *data);
+int				map_click_hook(int button, int x, int y, t_data *data);
+int				map_release_hook(int button, int x, int y, t_data *data);
+int				map_expose_hook(t_data *data);
+void			draw_map(t_data *data);
 int				end_map(t_data *data);
 
 int				key_hook(int keycode, t_data *data);
