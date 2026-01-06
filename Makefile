@@ -7,7 +7,7 @@ INCLUDE_DIR = ./include
 HEADER      = $(INCLUDE_DIR)/fractol.h
 
 SRC_DIR     = ./src
-SRCS        = main.c error.c plot.c parsing.c ft_atof.c mandelbrot.c julia.c info.c color.c burning_ship.c loop_hook.c mouse_hook.c key_hook.c map.c map_hook.c
+SRCS        = main.c error.c plot.c parsing.c ft_atof.c mandelbrot.c julia.c info.c color.c burning_ship.c loop_hook.c mouse_hook.c key_hook.c map.c
 OBJS        = $(addprefix $(SRC_DIR)/, $(SRCS:.c=.o))
 
 CC          = cc

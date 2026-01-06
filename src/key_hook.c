@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 19:29:19 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/06 14:17:07 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:26:04 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ static void	misc_hook(int keycode, t_data *data)
 		data->options->fractal++;
 		if (data->options->fractal > BURNING_SHIP)
 			data->options->fractal = MANDLEBROT;
+		end_map(data);
 	}
 }
 
