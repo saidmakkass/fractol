@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:00:29 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/06 17:28:04 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/06 17:32:59 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,12 @@ static void	print_fractals(void)
 static void	print_options(void)
 {
 	ft_putstr_fd("Options:\n", 2);
-	ft_putstr_fd("\t-j <c>\n\t\tset the constant c for the Julia fractal.\n\t\tDefault = 0.285 + 0.01i.\n", 2);
-	ft_putstr_fd("\t-s <size>\n\t\tset the size of the window.\n\t\tDefault = 600x600.\n", 2);
+	ft_putstr_fd("\t-j <c>\n", 2);
+	ft_putstr_fd("\t\tset the constant c for the Julia fractal.\n", 2);
+	ft_putstr_fd("\t\tDefault: 0.285 + 0.01i.\n", 2);
+	ft_putstr_fd("\t-s <size>\n", 2);
+	ft_putstr_fd("\t\tset the size of the window.\n", 2);
+	ft_putstr_fd("\t\tDefault: 600x600.\n", 2);
 }
 
 static void	print_examples(t_data *data)
