@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:00:29 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/05 22:07:28 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:07:02 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@ void	clear_data(t_data *data)
 {
 	if (data->options)
 		free(data->options);
-	if (data->img_data)
+	if (data->fractal)
 	{
-		mlx_destroy_image(data->mlx, data->img_data->img_ptr);
-		free(data->img_data);
+		if (data->fractal->img_ptr)
+			mlx_destroy_image(data->mlx, data->fractal->img_ptr);
+		if (data->fractal->win)
+			mlx_destroy_window(data->mlx, data->fractal->win);
+		free(data->fractal);
 	}
-	if (data->win)
-		mlx_destroy_window(data->mlx, data->win);
+	if (data->map)
+		end_map(data);
 	if (data->mlx)
 		mlx_destroy_display(data->mlx);
 	free(data->mlx);

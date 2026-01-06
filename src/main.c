@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:00:35 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/05 21:06:11 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/06 14:18:16 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ static void	init_data(t_data *data)
 static void	init_mlx(t_data *data)
 {
 	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, data->options->width,
+	data->fractal = ft_calloc(1, sizeof(t_win));
+	data->fractal->win = mlx_new_window(data->mlx, data->options->width,
 			data->options->height, data->name);
-	data->img_data = ft_calloc(1, sizeof(t_img));
-	data->img_data->img_ptr = mlx_new_image(data->mlx, data->options->width,
+	data->fractal->img_ptr = mlx_new_image(data->mlx, data->options->width,
 			data->options->height);
-	data->img_data->img_buf = mlx_get_data_addr(data->img_data->img_ptr,
-			&data->img_data->bpp, &data->img_data->sl, &data->img_data->endian);
+	data->fractal->img_buf = mlx_get_data_addr(data->fractal->img_ptr,
+			&data->fractal->bpp, &data->fractal->sl, &data->fractal->endian);
 }
 
 static int	expose_hook(t_data *data)
@@ -50,11 +50,11 @@ int	main(int argc, char **argv)
 	data->name = argv[0];
 	parse_args(data, argc, argv);
 	init_mlx(data);
-	mlx_key_hook(data->win, key_hook, data);
-	mlx_mouse_hook(data->win, mouse_hook, data);
-	mlx_expose_hook(data->win, expose_hook, data);
+	mlx_key_hook(data->fractal->win, key_hook, data);
+	mlx_mouse_hook(data->fractal->win, mouse_hook, data);
+	mlx_expose_hook(data->fractal->win, expose_hook, data);
 	mlx_loop_hook(data->mlx, loop_hook, data);
-	mlx_hook(data->win, 17, 0, quit, data);
+	mlx_hook(data->fractal->win, 17, 0, quit, data);
 	mlx_loop(data->mlx);
 	clear_data(data);
 	return (0);

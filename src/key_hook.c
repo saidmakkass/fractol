@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 19:29:19 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/05 22:38:30 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/06 14:17:07 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,17 @@ static void	color_hook(int keycode, t_data *data)
 	}
 }
 
+static void	map_hook(int keycode, t_data *data)
+{
+	if (data->options->fractal == JULIA && keycode == XK_m)
+	{
+		if (!data->map)
+			start_map(data);
+		else
+			end_map(data);
+	}
+}
+
 static void	misc_hook(int keycode, t_data *data)
 {
 	if (keycode == XK_Escape)
@@ -91,6 +102,7 @@ int	key_hook(int keycode, t_data *data)
 {
 	view_hook(keycode, data);
 	color_hook(keycode, data);
+	map_hook(keycode, data);
 	misc_hook(keycode, data);
 	plot(data);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 15:02:38 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/05 21:59:17 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:00:51 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	print(t_data *data, char *s, int *y)
 {
-	mlx_string_put(data->mlx, data->win, 6, *y + 1, 0x000000, s);
-	mlx_string_put(data->mlx, data->win, 5, *y, 0xFFFFFF, s);
+	mlx_string_put(data->mlx, data->fractal->win, 6, *y + 1, 0x000000, s);
+	mlx_string_put(data->mlx, data->fractal->win, 5, *y, 0xFFFFFF, s);
 	*y += 15;
 }
 
@@ -54,6 +54,7 @@ static void	print_commands(t_data *data, int *y)
 	print(data, "'F' = change fractal", y);
 	print(data, "'O' = toggle disco", y);
 	print(data, "'P' = toggle info", y);
+	print(data, "'M' = toggle Julia map", y);
 }
 
 void	print_info(t_data *data)

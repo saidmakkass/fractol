@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 19:45:51 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/05 21:30:55 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:04:53 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,22 @@ typedef struct s_options
 	double		julia_y;
 }				t_options;
 
-typedef struct s_img
+typedef struct s_win
 {
+	void		*win;
 	void		*img_ptr;
 	char		*img_buf;
 	int			bpp;
 	int			sl;
 	int			endian;
-}				t_img;
+}				t_win;
 
 typedef struct s_data
 {
 	char		*name;
 	t_options	*options;
 	void		*mlx;
-	void		*win;
-	t_img		*img_data;
+	t_win		*fractal;
 	int			max_iter;
 	double		zoom;
 	double		ox;
@@ -74,6 +74,7 @@ typedef struct s_data
 	bool		info;
 	bool		disco;
 	int			color;
+	t_win		*map;
 }				t_data;
 
 void			clear_data(t_data *data);
@@ -88,9 +89,15 @@ int				burning_ship(t_data *data, double x, double y);
 
 int				color(t_data *data, int iter);
 
+void			put_pixel(t_win *fractal, int x, int y, int color);
 void			plot(t_data *data);
 
 void			print_info(t_data *data);
+
+void			start_map(t_data *data);
+int				map_key_hook(int keycode, t_data *data);
+int				map_mouse_hook(int button, int x, int y, t_data *data);
+int				end_map(t_data *data);
 
 int				key_hook(int keycode, t_data *data);
 int				mouse_hook(int button, int x, int y, t_data *data);
