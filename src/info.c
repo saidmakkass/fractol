@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 15:02:38 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/06 16:10:40 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/06 17:10:17 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ static void	print_commands(t_data *data, int *y)
 	print(data, "'R' = reset view", y);
 	print(data, "'F' = change fractal", y);
 	print(data, "'O' = toggle disco", y);
-	print(data, "'M' = toggle Julia map", y);
+	if (data->options->fractal == JULIA)
+		print(data, "'M' = toggle Julia map", y);
 	print(data, "'P' = toggle info", y);
 }
 

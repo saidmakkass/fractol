@@ -6,11 +6,18 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:00:35 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/06 15:49:08 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/01/06 17:10:54 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int	quit(t_data *data)
+{
+	clear_data(data);
+	exit(0);
+	return (0);
+}
 
 static void	init_data(t_data *data)
 {
