@@ -21,17 +21,21 @@ void	put_pixel(t_win *fractal, int x, int y, int color)
 	*pixel = color;
 }
 
-void	plot(t_data *data)
+static void	*render_rows(void *arg)
 {
-	int			x;
-	int			y;
-	double		fx;
-	double		fy;
-	static int	(*fractals[])(t_data *, double, double) = {mandelbrot, julia,
-		burning_ship};
+	t_thread_data	*thread_data;
+	t_data			*data;
+	int				x;
+	int				y;
+	double			fx;
+	double			fy;
+	static int		(*fractals[])(t_data *, double, double) = {mandelbrot,
+		julia, burning_ship};
 
-	y = 0;
-	while (y < data->options->height)
+	thread_data = (t_thread_data *)arg;
+	data = thread_data->data;
+	y = thread_data->start_y;
+	while (y < thread_data->end_y)
 	{
 		x = 0;
 		while (x < data->options->width)
@@ -44,6 +48,35 @@ void	plot(t_data *data)
 					fractals[data->options->fractal](data, fx, fy)));
 		}
 		y++;
+	}
+	return (NULL);
+}
+
+void	plot(t_data *data)
+{
+	pthread_t		threads[NUM_THREADS];
+	t_thread_data	thread_data[NUM_THREADS];
+	int				i;
+	int				rows_per_thread;
+
+	rows_per_thread = data->options->height / NUM_THREADS;
+	i = 0;
+	while (i < NUM_THREADS)
+	{
+		thread_data[i].data = data;
+		thread_data[i].start_y = i * rows_per_thread;
+		if (i == NUM_THREADS - 1)
+			thread_data[i].end_y = data->options->height;
+		else
+			thread_data[i].end_y = (i + 1) * rows_per_thread;
+		pthread_create(&threads[i], NULL, render_rows, &thread_data[i]);
+		i++;
+	}
+	i = 0;
+	while (i < NUM_THREADS)
+	{
+		pthread_join(threads[i], NULL);
+		i++;
 	}
 	mlx_put_image_to_window(data->mlx, data->fractal->win,
 		data->fractal->img_ptr, 0, 0);

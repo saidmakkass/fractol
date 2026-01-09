@@ -22,6 +22,7 @@
 # include <stdio.h>
 # include <sys/time.h>
 # include <unistd.h>
+# include <pthread.h>
 
 # define MANDLEBROT 0
 # define JULIA 1
@@ -37,6 +38,8 @@
 # define DEFAULT_ITER 100
 
 # define ZOOM_FACTOR 1.1
+
+# define NUM_THREADS 4
 
 # define WHEEL_UP 4
 # define WHEEL_DOWN 5
@@ -78,6 +81,13 @@ typedef struct s_data
 	t_win		*map;
 	bool		hold;
 }				t_data;
+
+typedef struct s_thread_data
+{
+	t_data		*data;
+	int			start_y;
+	int			end_y;
+}				t_thread_data;
 
 void			clear_data(t_data *data);
 int				quit(t_data *data);

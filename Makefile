@@ -15,7 +15,7 @@ CFLAGS      = -Wall -Wextra -Werror -g
 
 MLX_DIR		= /usr/include/minilibx-linux
 
-LIBS		= -L$(MLX_DIR) -L$(LIBFT_DIR) -lft -lmlx -lXext -lX11 -lz -lm
+LIBS		= -L$(MLX_DIR) -L$(LIBFT_DIR) -lft -lmlx -lXext -lX11 -lz -lm -lpthread
 INCLUDES	= -I$(INCLUDE_DIR) -I$(MLX_DIR) -I$(LIBFT_DIR)
 
 RM          = rm -rf
