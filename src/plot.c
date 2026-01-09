@@ -71,7 +71,7 @@ void	plot(t_data *data)
 			thread_data[i].end_y = data->options->height;
 		else
 			thread_data[i].end_y = (i + 1) * rows_per_thread;
-		if (pthread_create(&threads[i], NULL, render_rows, &thread_data[i]) != 0)
+		if (pthread_create(&threads[i], NULL, render_rows, &thread_data[i]))
 		{
 			while (--i >= 0)
 				pthread_join(threads[i], NULL);
@@ -81,10 +81,7 @@ void	plot(t_data *data)
 	}
 	i = 0;
 	while (i < NUM_THREADS)
-	{
-		pthread_join(threads[i], NULL);
-		i++;
-	}
+		pthread_join(threads[i++], NULL);
 	mlx_put_image_to_window(data->mlx, data->fractal->win,
 		data->fractal->img_ptr, 0, 0);
 	print_info(data);
