@@ -59,6 +59,8 @@ void	plot(t_data *data)
 	int				i;
 	int				rows_per_thread;
 
+	if (data->options->height == 0)
+		return ;
 	rows_per_thread = data->options->height / NUM_THREADS;
 	i = 0;
 	while (i < NUM_THREADS)
@@ -69,7 +71,12 @@ void	plot(t_data *data)
 			thread_data[i].end_y = data->options->height;
 		else
 			thread_data[i].end_y = (i + 1) * rows_per_thread;
-		pthread_create(&threads[i], NULL, render_rows, &thread_data[i]);
+		if (pthread_create(&threads[i], NULL, render_rows, &thread_data[i]) != 0)
+		{
+			while (--i >= 0)
+				pthread_join(threads[i], NULL);
+			return ;
+		}
 		i++;
 	}
 	i = 0;
