@@ -82,14 +82,6 @@ make
 
 On the first build, the Makefile automatically clones and compiles the [MiniLibX](https://github.com/42paris/minilibx-linux) library from source. It then compiles the custom `libft` library and all source files, and links everything together.
 
-3. Clean build artifacts:
-
-```sh
-make clean      # remove object files
-make fclean     # remove object files and binary
-make re         # full rebuild
-```
-
 ---
 
 ## Usage
