@@ -13,30 +13,44 @@ OBJS        = $(addprefix $(SRC_DIR)/, $(SRCS:.c=.o))
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -g
 
-MLX_DIR		= /usr/include/minilibx-linux
+MLX_DIR     = ./minilibx-linux
+MLX         = $(MLX_DIR)/libmlx.a
 
-LIBS		= -L$(MLX_DIR) -L$(LIBFT_DIR) -lft -lmlx -lXext -lX11 -lz -lm
-INCLUDES	= -I$(INCLUDE_DIR) -I$(MLX_DIR) -I$(LIBFT_DIR)
+LIBS        = -L$(MLX_DIR) -L$(LIBFT_DIR) -lft -lmlx -lXext -lX11 -lz -lm
+INCLUDES    = -I$(INCLUDE_DIR) -I$(MLX_DIR) -I$(LIBFT_DIR)
 
 RM          = rm -rf
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(OBJS) $(LIBS) -o $@
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
+	@echo "Building Fractol..."
+	@$(CC) $(OBJS) $(LIBS) -o $@
+	@echo "Done."
+
+$(MLX): $(MLX_DIR)
+	@echo "Building Minilibx..."
+	@$(MAKE) -sC $(MLX_DIR) >/dev/null 2>&1
+
+$(MLX_DIR):
+	@echo "Cloning Minilibx..."
+	@git clone https://github.com/42paris/minilibx-linux.git $@ >/dev/null 2>&1
+
 
 $(LIBFT):
-	make -sC $(LIBFT_DIR)
+	@echo "Building Libft..."
+	@make -sC $(LIBFT_DIR)
 
-%.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+%.o: %.c $(HEADER) | $(MLX)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
-	make fclean -sC $(LIBFT_DIR)
+	@$(RM) $(OBJS)
+	@$(RM) $(MLX_DIR)
+	@make fclean -sC $(LIBFT_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 

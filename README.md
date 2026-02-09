@@ -55,9 +55,8 @@ fract-ol is a graphical exploration tool for mathematical fractals. It renders t
 
 - Linux (X11 window system)
 - GCC or compatible C compiler
-- MiniLibX library (installed at `/usr/include/minilibx-linux`)
 - X11 development libraries (`libXext`, `libX11`)
-- `make`
+- `make`, `git`
 
 ---
 
@@ -76,14 +75,14 @@ cd fractol
 make
 ```
 
-This compiles the custom `libft` library and all source files, then links against MiniLibX and X11.
+On the first build, the Makefile automatically clones and compiles the [MiniLibX](https://github.com/42paris/minilibx-linux) library from source. It then compiles the custom `libft` library and all source files, and links everything together.
 
 3. Clean build artifacts:
 
 ```sh
-make clean    # remove object files
-make fclean   # remove object files and binary
-make re       # full rebuild
+make clean      # remove object files
+make fclean     # remove object files and binary
+make re         # full rebuild
 ```
 
 ---
@@ -187,6 +186,7 @@ fractol/
 ├── Makefile                  Build system
 ├── include/
 │   └── fractol.h             Header with structs, prototypes, and constants
+├── minilibx-linux/           MiniLibX (cloned automatically on first build)
 ├── libft/                    Custom C standard library
 │   ├── Makefile
 │   ├── libft.h
