@@ -65,7 +65,7 @@ fract-ol is a graphical exploration tool for mathematical fractals. It renders t
 1. Clone the repository:
 
 ```sh
-git clone <repository-url> fractol
+git clone https://github.com/saidmakkass/fractol.git fractol
 cd fractol
 ```
 
