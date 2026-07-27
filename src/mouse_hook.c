@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 19:29:08 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/06 16:06:59 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/07/27 11:46:03 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ static void	zoom_hook(int button, double dx, double dy, t_data *data)
 	}
 }
 
-int	mouse_hook(int button, int x, int y, t_data *data)
+int	mouse_hook(int button, int x, int y, void *param)
 {
+	t_data	*data;
 	double	dx;
 	double	dy;
 
+	data = (t_data *)param;
 	dx = (data->options->width / 2.0 - x) / data->zoom / data->options->width;
 	dy = (data->options->height / 2.0 - y) / data->zoom / data->options->height;
 	zoom_hook(button, dx, dy, data);

@@ -11,7 +11,7 @@ SRCS        = main.c error.c plot.c parsing.c ft_atof.c mandelbrot.c julia.c inf
 OBJS        = $(addprefix $(SRC_DIR)/, $(SRCS:.c=.o))
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g
+CFLAGS      = -Wall -Wextra -Werror -Wno-incompatible-pointer-types
 
 MLX_DIR     = ./minilibx-linux
 MLX         = $(MLX_DIR)/libmlx.a

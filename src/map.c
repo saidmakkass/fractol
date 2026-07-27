@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 13:07:23 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/06 16:39:57 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/07/27 11:53:26 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ void	start_map(t_data *data)
 	data->map->img_ptr = mlx_new_image(data->mlx, 300, 300);
 	data->map->img_buf = mlx_get_data_addr(data->map->img_ptr, &data->map->bpp,
 			&data->map->sl, &data->map->endian);
-	mlx_key_hook(data->map->win, map_key_hook, data);
+	mlx_key_hook(data->map->win, map_key_hook, (void *)data);
 	mlx_hook(data->map->win, ButtonPress, ButtonPressMask, map_click_hook,
-		data);
+		(void *)data);
 	mlx_hook(data->map->win, ButtonRelease, ButtonReleaseMask, map_release_hook,
-		data);
-	mlx_expose_hook(data->map->win, map_expose_hook, data);
+		(void *)data);
+	mlx_expose_hook(data->map->win, map_expose_hook, (void *)data);
 }

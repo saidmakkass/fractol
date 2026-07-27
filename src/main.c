@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:00:35 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/06 17:10:54 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/07/27 11:51:24 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,11 @@ static void	init_mlx(t_data *data)
 			&data->fractal->bpp, &data->fractal->sl, &data->fractal->endian);
 }
 
-static int	expose_hook(t_data *data)
+static int	expose_hook(void *param)
 {
+	t_data	*data;
+
+	data = (t_data *)param;
 	plot(data);
 	return (0);
 }
@@ -57,11 +60,11 @@ int	main(int argc, char **argv)
 	data->name = argv[0];
 	parse_args(data, argc, argv);
 	init_mlx(data);
-	mlx_key_hook(data->fractal->win, key_hook, data);
-	mlx_mouse_hook(data->fractal->win, mouse_hook, data);
-	mlx_expose_hook(data->fractal->win, expose_hook, data);
-	mlx_loop_hook(data->mlx, loop_hook, data);
-	mlx_hook(data->fractal->win, DestroyNotify, NoEventMask, quit, data);
+	mlx_key_hook(data->fractal->win, key_hook, (void *)data);
+	mlx_mouse_hook(data->fractal->win, mouse_hook, (void *)data);
+	mlx_expose_hook(data->fractal->win, expose_hook, (void *)data);
+	mlx_loop_hook(data->mlx, loop_hook, (void *)data);
+	mlx_hook(data->fractal->win, DestroyNotify, NoEventMask, quit, (void *)data);
 	mlx_loop(data->mlx);
 	clear_data(data);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 19:45:51 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/06 16:18:17 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/07/27 11:56:09 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +97,15 @@ void			plot(t_data *data);
 void			print_info(t_data *data);
 
 void			start_map(t_data *data);
-int				map_key_hook(int keycode, t_data *data);
-int				map_click_hook(int button, int x, int y, t_data *data);
-int				map_release_hook(int button, int x, int y, t_data *data);
-int				map_expose_hook(t_data *data);
+int				map_key_hook(int keycode, void *param);
+int				map_click_hook(int button, int x, int y, void *param);
+int				map_release_hook(int button, int x, int y, void *param);
+int				map_expose_hook(void *param);
 void			draw_map(t_data *data);
 int				end_map(t_data *data);
 
-int				key_hook(int keycode, t_data *data);
-int				mouse_hook(int button, int x, int y, t_data *data);
-int				loop_hook(t_data *data);
+int				key_hook(int keycode, void *param);
+int				mouse_hook(int button, int x, int y, void *param);
+int				loop_hook(void *param);
 
 #endif

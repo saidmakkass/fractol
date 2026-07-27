@@ -6,17 +6,19 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 19:29:22 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/06 16:01:21 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/07/27 11:47:25 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	loop_hook(t_data *data)
+int	loop_hook(void *param)
 {
+    t_data *data;
 	int	x;
 	int	y;
 
+    data = (t_data *)param;
 	if (data->disco)
 	{
 		data->color++;

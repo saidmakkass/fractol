@@ -6,7 +6,7 @@
 /*   By: smakkass <smakkass@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 19:29:19 by smakkass          #+#    #+#             */
-/*   Updated: 2026/01/06 15:26:04 by smakkass         ###   ########.fr       */
+/*   Updated: 2026/07/27 11:41:07 by smakkass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,11 @@ static void	map_hook(int keycode, t_data *data)
 	}
 }
 
-static void	misc_hook(int keycode, t_data *data)
+static void	misc_hook(int keycode, void *param)
 {
+	t_data	*data;
+
+	data = (t_data *)param;
 	if (keycode == XK_Escape)
 		quit(data);
 	if (keycode == XK_p)
@@ -99,8 +102,11 @@ static void	misc_hook(int keycode, t_data *data)
 	}
 }
 
-int	key_hook(int keycode, t_data *data)
+int	key_hook(int keycode, void *param)
 {
+	t_data	*data;
+
+	data = (t_data *)param;
 	view_hook(keycode, data);
 	color_hook(keycode, data);
 	map_hook(keycode, data);
