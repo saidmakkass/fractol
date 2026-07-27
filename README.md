@@ -64,7 +64,7 @@ fract-ol is a graphical exploration tool for mathematical fractals. It renders t
 
 1. Install dependencies:
 ```sh
-sudo apt update && apt install -y git make gcc libx11-dev libxext-dev libbsd-dev libzip-dev
+sudo apt update && sudo apt install -y git make gcc libx11-dev libxext-dev libbsd-dev libzip-dev
 ```
 
 2. Clone the repository:
